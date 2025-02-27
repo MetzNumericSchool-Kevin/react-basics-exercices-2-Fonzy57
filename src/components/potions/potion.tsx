@@ -1,5 +1,3 @@
-import { MouseEventHandler } from "react";
-
 interface PotionProps {
   name: string;
   onAddToInventoria: (name: string) => void;
