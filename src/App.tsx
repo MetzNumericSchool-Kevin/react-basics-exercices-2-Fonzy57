@@ -1,15 +1,19 @@
 import "./App.css";
+
+// COMPONENTS
 import Section from "./components/section/section";
+import BienvenueAventurier from "./components/bienvenue/bienvenue-aventurier";
 
 function App() {
   return (
     <div className="container p-5 mb-4 bg-body-tertiary rounded-3">
       <Section id="exercice1">
-        <h1>Boutique d'Archibald le Sorcier (bis repetita) 🧙‍♂️</h1>
-        <p>
-          Bienvenue Aventurier, ici vous pouvez acheter diverses potions
-          magiques pour vos aventures !
-        </p>
+        <BienvenueAventurier title="Boutique d'Archibald le Sorcier (bis repetita) 🧙‍♂️">
+          <p>
+            Bienvenue <b>Aventurier</b>, ici vous pouvez acheter diverses
+            <u>potions magiques</u> pour vos aventures !
+          </p>
+        </BienvenueAventurier>
       </Section>
 
       <Section id="exercice2">
