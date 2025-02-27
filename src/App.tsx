@@ -10,10 +10,10 @@ import BienvenueAventurier from "./components/bienvenue/bienvenue-aventurier";
 import Inventoria from "./components/inventoria/inventoria";
 import PotionShop from "./components/potions/potion-shop";
 import Potion from "./components/potions/potion";
+import NewPotionForm from "./components/potions/new-potion-form";
 
 // STYLE
 import "./App.css";
-import NewPotionForm from "./components/potions/new-potion-form";
 
 function App() {
   const [isInventoryOpened, setIsInventoryOpened] = useState<boolean>(false);
