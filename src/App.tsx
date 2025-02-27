@@ -13,17 +13,23 @@ import Potion from "./components/potions/potion";
 
 // STYLE
 import "./App.css";
+import NewPotionForm from "./components/potions/new-potion-form";
 
 function App() {
   const [isInventoryOpened, setIsInventoryOpened] = useState<boolean>(false);
-  const [potionInEnventory, setPotionInEnventory] = useState<string[]>([]);
+  const [potionInInventory, setPotionInInventory] = useState<string[]>([]);
+  const [potionInShop, setPotionInShop] = useState<string[]>(potion);
 
   const handleCLickInventoria = () => {
     setIsInventoryOpened(!isInventoryOpened);
   };
 
   const handleAddToInventoria = (potionName: string) => {
-    setPotionInEnventory([...potionInEnventory, potionName]);
+    setPotionInInventory([...potionInInventory, potionName]);
+  };
+
+  const handleAddToShop = (potionName: string) => {
+    setPotionInShop([...potionInShop, potionName]);
   };
 
   return (
@@ -47,14 +53,14 @@ function App() {
         <div className="row mt-5">
           <Inventoria
             isInventoryOpened={isInventoryOpened}
-            potions={potionInEnventory}
+            potions={potionInInventory}
           />
         </div>
       </Section>
 
       <Section id="exercice3">
         <PotionShop title="Boutique de potion">
-          {potion.map((p, index) => {
+          {potionInShop.map((p, index) => {
             return (
               <Potion
                 key={index}
@@ -68,22 +74,7 @@ function App() {
 
       <Section id="exercice4">
         <h2 className="mb-5">Ajout de potions</h2>
-
-        <form>
-          <div className="row">
-            <div className="col">
-              <label htmlFor="name">Nom de la potion</label>
-              <input type="text" className="form-control" id="name" />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col">
-              <button className="btn btn-primary" type="submit">
-                Ajouter à la boutique
-              </button>
-            </div>
-          </div>
-        </form>
+        <NewPotionForm onAddPotionInShop={handleAddToShop} />
       </Section>
     </div>
   );
