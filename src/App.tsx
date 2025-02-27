@@ -1,10 +1,15 @@
 import "./App.css";
+import { useState } from "react";
+
+// DATA
+import potion from "./data/potion";
 
 // COMPONENTS
 import Section from "./components/section/section";
 import BienvenueAventurier from "./components/bienvenue/bienvenue-aventurier";
-import { useState } from "react";
 import Inventoria from "./components/inventoria/inventoria";
+import PotionShop from "./components/potions/potion-shop";
+import Potion from "./components/potions/potion";
 
 function App() {
   const [isInventoryOpened, setIsInventoryOpened] = useState<boolean>(false);
@@ -37,16 +42,11 @@ function App() {
       </Section>
 
       <Section id="exercice3">
-        <h2 className="mb-5">Boutique de potion</h2>
-
-        <div className="row row-cols-1 row-cols-md-4 g-4">
-          <div className="card col border text-bg-dark bg-dark">
-            <div className="card-body">Blabla</div>
-            <div className="card-actions">
-              <button>Ajouter à Inventoria</button>
-            </div>
-          </div>
-        </div>
+        <PotionShop title="Boutique de potion">
+          {potion.map((p, index) => {
+            return <Potion key={index} title={p} />;
+          })}
+        </PotionShop>
       </Section>
 
       <Section id="exercice4">
