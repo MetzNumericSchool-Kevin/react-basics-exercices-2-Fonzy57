@@ -5,7 +5,7 @@ interface PotionShopProps {
   children: ReactNode;
 }
 
-const PotionShop = ({ title, children }) => {
+const PotionShop = ({ title, children }: PotionShopProps) => {
   return (
     <>
       <h2 className="mb-5">{title}</h2>

@@ -1,14 +1,19 @@
+import { MouseEventHandler } from "react";
+
 interface PotionProps {
-  title: string;
+  name: string;
+  onAddToInventoria: (name: string) => void;
 }
 
-const Potion = ({ title }: PotionProps) => {
+const Potion = ({ name, onAddToInventoria }: PotionProps) => {
   return (
     <div className="row row-cols-1 row-cols-md-4 g-4">
       <div className="card col border text-bg-dark bg-dark">
-        <div className="card-body">{title}</div>
+        <div className="card-body">{name}</div>
         <div className="card-actions">
-          <button>Ajouter à Inventoria</button>
+          <button onClick={() => onAddToInventoria(name)}>
+            Ajouter à Inventoria
+          </button>
         </div>
       </div>
     </div>

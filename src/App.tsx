@@ -1,4 +1,4 @@
-import "./App.css";
+// REACT
 import { useState } from "react";
 
 // DATA
@@ -11,11 +11,19 @@ import Inventoria from "./components/inventoria/inventoria";
 import PotionShop from "./components/potions/potion-shop";
 import Potion from "./components/potions/potion";
 
+// STYLE
+import "./App.css";
+
 function App() {
   const [isInventoryOpened, setIsInventoryOpened] = useState<boolean>(false);
+  const [potionInEnventory, setPotionInEnventory] = useState<string[]>([]);
 
   const handleCLickInventoria = () => {
     setIsInventoryOpened(!isInventoryOpened);
+  };
+
+  const handleAddToInventoria = (potionName: string) => {
+    setPotionInEnventory([...potionInEnventory, potionName]);
   };
 
   return (
@@ -37,14 +45,23 @@ function App() {
         </button>
 
         <div className="row mt-5">
-          <Inventoria isInventoryOpened={isInventoryOpened} />
+          <Inventoria
+            isInventoryOpened={isInventoryOpened}
+            potions={potionInEnventory}
+          />
         </div>
       </Section>
 
       <Section id="exercice3">
         <PotionShop title="Boutique de potion">
           {potion.map((p, index) => {
-            return <Potion key={index} title={p} />;
+            return (
+              <Potion
+                key={index}
+                name={p}
+                onAddToInventoria={handleAddToInventoria}
+              />
+            );
           })}
         </PotionShop>
       </Section>
