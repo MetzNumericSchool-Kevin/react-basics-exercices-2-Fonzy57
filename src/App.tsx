@@ -3,8 +3,16 @@ import "./App.css";
 // COMPONENTS
 import Section from "./components/section/section";
 import BienvenueAventurier from "./components/bienvenue/bienvenue-aventurier";
+import { useState } from "react";
+import Inventoria from "./components/inventoria/inventoria";
 
 function App() {
+  const [isInventoryOpened, setIsInventoryOpened] = useState<boolean>(false);
+
+  const handleCLickInventoria = () => {
+    setIsInventoryOpened(!isInventoryOpened);
+  };
+
   return (
     <div className="container p-5 mb-4 bg-body-tertiary rounded-3">
       <Section id="exercice1">
@@ -19,14 +27,12 @@ function App() {
       <Section id="exercice2">
         <h2>Inventoria</h2>
 
-        <button className="btn btn-primary">Ouvrir Inventoria</button>
+        <button className="btn btn-primary" onClick={handleCLickInventoria}>
+          {isInventoryOpened ? "Fermer" : "Ouvrir"} Inventoria
+        </button>
 
         <div className="row mt-5">
-          <ul className="list-group list-group-horizontal flex-wrap">
-            <li className="list-group-item list-group-item-info">
-              Inventoria est pour le moment vide ⛺
-            </li>
-          </ul>
+          <Inventoria isInventoryOpened={isInventoryOpened} />
         </div>
       </Section>
 
