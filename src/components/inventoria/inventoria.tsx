@@ -8,7 +8,7 @@ const Inventoria = ({ isInventoryOpened, potions }: InventoriaProps) => {
     <>
       {isInventoryOpened && (
         <ul className="list-group list-group-horizontal flex-wrap">
-          {potions.length > 0 &&
+          {potions.length > 0 ? (
             potions.map((potion, index) => {
               return (
                 <li
@@ -18,8 +18,8 @@ const Inventoria = ({ isInventoryOpened, potions }: InventoriaProps) => {
                   {potion}
                 </li>
               );
-            })}
-          {potions.length <= 0 && (
+            })
+          ) : (
             <li className="list-group-item list-group-item-info">
               Inventoria est pour le moment vide ⛺
             </li>
